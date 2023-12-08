@@ -15,6 +15,19 @@ async function getData(URL){
     } catch (error){
         document.querySelector("h1").textContent = `sorry I cannot find ${pokemon}`
     }
+
 }
 getData(URL);
 
+// generate a card
+// const container = document.querySelector("#container")
+
+// function create(blah){
+//   blah.foreach((result)=>{
+//     const card = document.createElement('div');
+//     card.classlist = 'card'
+//     const desc = `<img src="${result.url}">`
+//     container.innerHTML = desc;
+//     })
+// }
+// create(memes)
