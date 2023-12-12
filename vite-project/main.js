@@ -10,12 +10,13 @@ async function getData(URL){
         console.log(response);
         const data = await response.json();
         console.log(data);
-        const memes = data.memes
+        
     } catch (error){
+        console.log(error)
     }
-
 }
 getData(URL);
+
 
 // generate a card
 // const container = document.querySelector("#container")
