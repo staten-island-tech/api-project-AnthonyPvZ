@@ -16,13 +16,14 @@ async function getData(URL){
     }
 }
 getData(URL);
-const memes = fetch(URL)
+const memes = await fetch(URL)
 console.log(memes);
 fetch(URL)
     .then((res)=>res.json())
     .then((data)=>{console.log(data)})
-    .then
-
+    .then((data).foreach((console.log)))
+    
+//https://github.com/TomerAberbach/imgflip
 
 
 // generate a card
