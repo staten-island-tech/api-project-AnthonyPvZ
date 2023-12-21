@@ -4,28 +4,20 @@ const URL = `https://api.imgflip.com/get_memes`;
 async function getData(URL){
     try{
         const response = await fetch(URL);
+        const data = await response.json();
+        console.log(data);
         if (response.status != 200) {
             throw new Error(response.statusText)
         }
         console.log(response);
-        const data = await response.json();
-        console.log(data);
+        document.getElementById("#h1s").textcontent = data.memes[2].name
     }
     catch (error){
         console.log(error)
     }
 }
-getData(URL);
+console.log(getData(URL));
 
-fetch(URL).then((response)=>{if(response.ok){return response.json()}}).then(data=>{console.log(data);showmeme(data)})
-
-function showmeme(data){
-    const meme = data.memes[1]
-    const memediv = document.getElementById("#h1")
-    const memename = meme.name
-    const title = document.createElement("h1")
-    title.innerHTML = memename
-}
 
 // generate a card
 // const container = document.querySelector("#container")
