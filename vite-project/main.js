@@ -9,8 +9,11 @@ async function getData(URL){
         if (response.status != 200) {
             throw new Error(response.statusText)
         }
+        let x = Array.from(data.data.memes)
+        for(let i=0;i<x.length; i++){
+            console.log(x[i]);              
+        } 
         console.log(response);
-        document.getElementById("#h1s").textcontent = data.memes[2].name
     }
     catch (error){
         console.log(error)
