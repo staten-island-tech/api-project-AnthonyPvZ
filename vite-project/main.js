@@ -21,7 +21,21 @@ async function getData(URL){
 }
 console.log(getData(URL));
 
+const searchmemes = async(name)=>{
+    const response = await fetch(`${URL}?search=${name}`)
+    const data = await response.json();
+    return data
+}
 
+const whenclicked = async()=>{
+    let name = document.getElementById("meme").value 
+    let result = await searchmemes(name)
+    let meme = result.data.length > 0 ? result.data[0] : null
+
+    if (meme){
+        document.getElementById("")
+}
+}
 // generate a card
 // const container = document.querySelector("#container")
 
