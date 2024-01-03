@@ -10,7 +10,12 @@ async function getData(URL){
             throw new Error(response.statusText)
         }
         let x = Array.from(data.data.memes)
+        const TwoBtns = x.filter(function(b){
+            return b.name.includes("Two Buttons")
+        })
+        console.log(TwoBtns)
         for(let i=0;i<x.length; i++){
+
             // console.log(x[i]);              
         } 
         console.log(response);
@@ -22,24 +27,24 @@ async function getData(URL){
 console.log(getData(URL));
 
 const searchmemes = async(name)=>{
-    const response = await fetch(`${URL}?search=${name}`)
+    const response = await fetch(URL)
     const data = await response.json();
     console.log(data)
     return data
 }
 
 const whenclicked = async()=>{
-    let name = document.getElementById("query").value
+    let name = document.getElementById("meme").value
     console.log(name)
     let result = await searchmemes(name)
-    let meme = result.data.memes.length > 0 ? result.data[0] : null
-    console.log(meme)
-    if (meme){
-        document.getElementById("name").innerText = `Meme: ${meme["name"]}`
-        document.getElementById("image").innerHTML = `URL: ${meme["url"]}`
+    let memes = result.data.memes.length > 0 ? result.data[0] : null
+    console.log(memes)
+    if (memes){
+        document.getElementById("name").innerText = `Meme: ${memes["name"]}`
+        document.getElementById("image").innerHTML = `URL: ${memes["url"]}`
 }
 }
-whenclicked()
+document.getElementById("query").onclick = whenclicked
 // generate a card
 // const container = document.querySelector("#container")
 
