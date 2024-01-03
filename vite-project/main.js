@@ -11,7 +11,7 @@ async function getData(URL){
         }
         let x = Array.from(data.data.memes)
         for(let i=0;i<x.length; i++){
-            console.log(x[i]);              
+            // console.log(x[i]);              
         } 
         console.log(response);
     }
@@ -24,18 +24,22 @@ console.log(getData(URL));
 const searchmemes = async(name)=>{
     const response = await fetch(`${URL}?search=${name}`)
     const data = await response.json();
+    console.log(data)
     return data
 }
 
 const whenclicked = async()=>{
-    let name = document.getElementById("meme").value 
+    let name = document.getElementById("query").value
+    console.log(name)
     let result = await searchmemes(name)
-    let meme = result.data.length > 0 ? result.data[0] : null
-
+    let meme = result.data.memes.length > 0 ? result.data[0] : null
+    console.log(meme)
     if (meme){
-        document.getElementById("")
+        document.getElementById("name").innerText = `Meme: ${meme["name"]}`
+        document.getElementById("image").innerHTML = `URL: ${meme["url"]}`
 }
 }
+whenclicked()
 // generate a card
 // const container = document.querySelector("#container")
 
