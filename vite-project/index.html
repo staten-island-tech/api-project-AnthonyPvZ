@@ -7,18 +7,15 @@
     <title>Vite App</title>
     
   </head>
-  <body>
-  <div id="container">
-  <form>
+  <body>  
+  <form onsubmit="return false"> //question for wayland - needed?
     <div>
       <label for="query">Search for meme</label>
       <input type="text" id="meme" placeholder="type your meme here" required/>
-      <input id="query" type="submit" name="text" value="Submit"/>
+      <input id="query" type="submit" name="text" value="Submit" />
     </div>
   </form>
-  <div id="name">nla</div>
-  <div id="image">blah</div>
- 
+  <div id="container">
     <script type="module" src="/main.js"></script>
   </body>
 </html>
