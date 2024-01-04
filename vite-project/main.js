@@ -29,19 +29,20 @@ const URL = `https://api.imgflip.com/get_memes`;
 // console.log(getData(URL));
 
 const filtermemes = async()=>{
-    let meme = document.getElementById("meme").value;
+    let meme = document.getElementById("meme").value.toLowerCase();
     const response = await fetch(URL);
     const memeslist= await response.json();
     let y = Array.from(memeslist.data.memes);
     const foundmeme = y.filter(function(b){
-        return b.name.includes(meme)
+        return b.name.toLowerCase().includes(meme)
     })
     console.log(foundmeme)
     function create(blah){
           blah.map((result)=>{
             const card = document.createElement('div');
             card.classlist = 'card' 
-            const desc = `<img src="${result.url}">`
+            const desc = `<h2 class="memename">${result.name}</h2>
+            <img src="${result.url}">`
             container.innerHTML = desc;
             })
         }
