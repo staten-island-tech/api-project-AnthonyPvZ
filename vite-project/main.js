@@ -41,7 +41,7 @@ const filtermemes = async()=>{
           blah.map((result)=>{
             const card = document.createElement('div');
             card.classlist = 'card' 
-            const desc = `<h2 class="memename">${result.name}</h2>
+            const desc = `<h2 class="memename" alt="The name of the meme">${result.name}</h2>
             <img src="${result.url}">`
             container.innerHTML = desc;
             })
