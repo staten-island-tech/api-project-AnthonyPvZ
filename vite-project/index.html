@@ -1,13 +1,25 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body class="background">
+  <h1 class="Project-head" alt="A library of popular memes">Library of Memes</h1>
+  <form id="form" onsubmit="return false">
+    <div class="searchbar">
+      <label id="label" for="input">Search for a meme</label>
+      <input type="text" id="input" alt="Type your meme here" placeholder="Type your meme here" required />
+      <input id="query" type="submit" name="text" value="Go!" />
+      <label id="label" for="query">Submit input</label>
+    </div>
+  </form>
+  <div id="container">
+    <script type="module" src="./js/main.js"></script>
+</body>
+
 </html>
