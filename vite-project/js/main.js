@@ -1,6 +1,33 @@
 import '../css/style.css'
 
 const URL = `https://api.imgflip.com/get_memes`;
+async function getData(URL){
+    try{
+        const response = await fetch(URL);
+        const data = await response.json();
+        console.log(data);
+        if (response.status != 200) {
+            throw new Error(response.statusText)
+        }
+        let x = Array.from(data.data.memes);
+        function create(blah) {
+            blah.map((result) => {
+                const card = document.createElement('div');
+                card.classlist = 'card'
+                const desc = `<div class=card><h1 class="card-title" alt="The meme is">Meme:</h1>
+                <h2 class="memename" alt="${result.name}">${result.name}</h2>
+                <img class=card-img alt="${result.name}" src="${result.url}"></div>`
+                container.innerHTML += desc;
+            })
+        }
+        create(x)
+        console.log(response);
+    }
+    catch (error){
+        console.log(error)
+    }
+}
+getData(URL);
 const filtermemes = async () => {
     try{
     container.innerHTML = ""
