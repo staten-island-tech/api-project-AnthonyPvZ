@@ -1,6 +1,37 @@
-import './style.css'
+import '../css/style.css'
 
 const URL = `https://api.imgflip.com/get_memes`;
+const filtermemes = async () => {
+    try{
+    container.innerHTML = ""
+    let meme = document.getElementById("input").value.toLowerCase();
+    const response = await fetch(URL);
+    const memeslist = await response.json();
+    if (response.status != 200) {
+        throw new Error(response.statusText)
+    }
+    let y = Array.from(memeslist.data.memes);
+    const foundmeme = y.filter(function (b) {
+        return b.name.toLowerCase().includes(meme)
+    })
+    console.log(foundmeme)
+    function create(blah) {
+        blah.map((result) => {
+            const card = document.createElement('div');
+            card.classlist = 'card'
+            const desc = `<div class=card><h1 class="card-title" alt="The meme is">Meme:</h1>
+            <h2 class="memename" alt="${result.name}">${result.name}</h2>
+            <img class=card-img alt="${result.name}" src="${result.url}"></div>`
+            container.innerHTML += desc;
+        })
+    }
+    create(foundmeme)
+}
+    catch (error){
+        console.log(error)
+    }
+}
+document.getElementById("query").onclick = filtermemes
 // async function getData(URL){
 //     try{
 //         const response = await fetch(URL);
@@ -17,8 +48,8 @@ const URL = `https://api.imgflip.com/get_memes`;
 //         console.log(TwoBtns)
 //         for(let i=0;i<x.length; i++){
 
-//             // console.log(x[i]);              
-//         } 
+//             // console.log(x[i]);
+//         }
 //         console.log(response);
 //         document.getElementById("name").innerText === TwoBtns.name
 //     }
@@ -28,27 +59,7 @@ const URL = `https://api.imgflip.com/get_memes`;
 // }
 // console.log(getData(URL));
 
-const filtermemes = async()=>{
-    let meme = document.getElementById("meme").value.toLowerCase();
-    const response = await fetch(URL);
-    const memeslist= await response.json();
-    let y = Array.from(memeslist.data.memes);
-    const foundmeme = y.filter(function(b){
-        return b.name.toLowerCase().includes(meme)
-    })
-    console.log(foundmeme)
-    function create(blah){
-          blah.map((result)=>{
-            const card = document.createElement('div');
-            card.classlist = 'card' 
-            const desc = `<h2 class="memename" alt="The name of the meme">${result.name}</h2>
-            <img src="${result.url}">`
-            container.innerHTML = desc;
-            })
-        }
-    create(foundmeme)
-}
-document.getElementById("query").onclick = filtermemes
+
 // const searchmemes = async(name)=>{
 //     const response = await fetch(URL)
 //     const data = await response.json();
